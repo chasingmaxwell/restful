@@ -25,7 +25,7 @@ class RestfulPluginPrecedenceTestCase extends DrupalWebTestCase {
   function testPluginPrecedence() {
     // Test that the hal_xml formatter plugin is first.
     $plugins = restful_get_formatter_plugins();
-    $this->assertTrue(key($plugins) === 'hal_xml');
+    $this->assertTrue(key($plugins) === 'hal_xml' && $plugins['hal_xml']['weight'] === -1, 'The hal_xml formatter plugin has a weight of -1 and is first in the retrieved array of formatter plugins.');
   }
 
 }
